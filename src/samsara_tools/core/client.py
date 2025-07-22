@@ -353,3 +353,152 @@ class SamsaraClient:
         except requests.exceptions.RequestException as e:
             logger.error(f"Error fetching route path for {route_id}: {e}")
             return None 
+    
+    def get_all_trailers(self, use_cache: bool = True) -> List[Dict]:
+        """Fetch all trailers from the Samsara API.
+        
+        Args:
+            use_cache: Whether to use cached data if available
+            
+        Returns:
+            List of trailer dictionaries
+        """
+        cache_file = self.cache_manager.cache_dir / 'trailers.json'
+        
+        if use_cache:
+            cached_data = self.cache_manager.load_cache(cache_file)
+            if cached_data:
+                logger.info("Using cached trailer data...")
+                return cached_data
+        
+        url = f"{self.base_url}/fleet/trailers"
+        all_trailers = []
+        
+        try:
+            while url:
+                def make_request():
+                    response = requests.get(url, headers=self.headers)
+                    response.raise_for_status()
+                    return response.json()
+                
+                data = self.rate_limiter.execute_with_retry(make_request)
+                all_trailers.extend(data['data'])
+                
+                # Check for pagination
+                pagination = data.get('pagination', {})
+                if pagination.get('hasNextPage', False):
+                    cursor = pagination.get('endCursor', '')
+                    url = f"{self.base_url}/fleet/trailers?after={cursor}"
+                else:
+                    url = None
+                    
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Error fetching trailers: {e}")
+            return []
+        
+        if use_cache and all_trailers:
+            self.cache_manager.save_cache(cache_file, all_trailers)
+        
+        logger.info(f"Fetched {len(all_trailers)} trailers from API")
+        return all_trailers
+    
+    def get_trailer_details(self, trailer_id: str) -> Optional[Dict]:
+        """Get detailed information for a specific trailer."""
+        url = f"{self.base_url}/fleet/trailers/{trailer_id}"
+        
+        try:
+            def make_request():
+                response = requests.get(url, headers=self.headers)
+                response.raise_for_status()
+                return response.json()['data']
+            
+            return self.rate_limiter.execute_with_retry(make_request)
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Error fetching trailer details for {trailer_id}: {e}")
+            return None
+    
+    def get_trips(self, trailer_id: str, start_time: datetime,
+                  end_time: datetime, use_cache: bool = True) -> List[Dict]:
+        """Get all trips for a trailer within a time range.
+        
+        Args:
+            trailer_id: ID of the trailer
+            start_time: Start of time range
+            end_time: End of time range
+            use_cache: Whether to use cached data if available
+            
+        Returns:
+            List of trip dictionaries
+        """
+        cache_key = f"trips_{trailer_id}_{start_time.isoformat()}_{end_time.isoformat()}"
+        cache_file = self.cache_dir / 'trips' / f"{cache_key}.json"
+        cache_file.parent.mkdir(parents=True, exist_ok=True)
+        
+        if use_cache:
+            cached_data = self.cache_manager.load_cache(cache_file)
+            if cached_data:
+                logger.info(f"Using cached trips data from {cache_file}")
+                return cached_data
+        
+        all_trips = []
+        params = {
+            'startTime': start_time.isoformat() + 'Z',
+            'endTime': end_time.isoformat() + 'Z',
+        }
+        
+        url = f"{self.base_url}/fleet/trailers/{trailer_id}/trips"
+        
+        try:
+            while url:
+                def make_request():
+                    response = requests.get(url, headers=self.headers,
+                                          params=params if 'trips' in url else None)
+                    response.raise_for_status()
+                    return response.json()
+                
+                data = self.rate_limiter.execute_with_retry(make_request)
+                trips = data.get('data', [])
+                all_trips.extend(trips)
+                
+                # Check for pagination
+                pagination = data.get('pagination', {})
+                if pagination.get('hasNextPage', False):
+                    cursor = pagination.get('endCursor', '')
+                    url = f"{self.base_url}/fleet/trailers/{trailer_id}/trips?after={cursor}"
+                else:
+                    url = None
+                    
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Error fetching trips for trailer {trailer_id}: {e}")
+            return []
+        
+        # Cache the results
+        if all_trips and use_cache:
+            self.cache_manager.save_cache(cache_file, all_trips)
+        
+        logger.info(f"Fetched {len(all_trips)} trips for trailer {trailer_id}")
+        return all_trips
+    
+    def get_trip_path(self, trip_id: str, include_stops: bool = True) -> Optional[Dict]:
+        """Get the GPS path and stops for a specific trip.
+        
+        Args:
+            trip_id: ID of the trip
+            include_stops: Whether to include stop information
+            
+        Returns:
+            Dictionary with trip path data or None if error
+        """
+        url = f"{self.base_url}/fleet/trips/{trip_id}/path"
+        params = {'includeStops': include_stops}
+        
+        try:
+            def make_request():
+                response = requests.get(url, headers=self.headers, params=params)
+                response.raise_for_status()
+                return response.json()['data']
+            
+            return self.rate_limiter.execute_with_retry(make_request)
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Error fetching trip path for {trip_id}: {e}")
+            return None
