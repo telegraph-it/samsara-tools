@@ -1,0 +1,1597 @@
+{
+  "metadata": {
+    "generated_at": "2025-07-21T15:44:04.703082",
+    "total_dairies": 12,
+    "total_routes": 39,
+    "grouping_method": "dairy_and_injection_site"
+  },
+  "data": {
+    "AI Route: QU_3897": {
+      "from Maas-Stillwater Dairy [MAA-STI-20] to Maas-Five Points Injection Site": [
+        {
+          "id": "6051324653",
+          "name": "AI Route: QU_3897 - from Maas-Stillwater Dairy [MAA-STI-20] to Maas-Five Points Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-06-27 16:35:23.007000+00:00",
+          "end_time": "2025-07-01 12:35:23.008000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6324836569",
+              "name": "Maas-Stillwater Dairy [MAA-STI-20]",
+              "address": "Maas-Stillwater Dairy [MAA-STI-20]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-06-27 14:24:31.600000+00:00",
+              "departure_time": "2025-06-27 14:24:31.600000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6324836570",
+              "name": "Maas-Five Points Injection Site",
+              "address": "Maas-Five Points Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-06-27 15:07:40.396000+00:00",
+              "departure_time": "2025-06-28 05:00:11.548000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        },
+        {
+          "id": "6051702482",
+          "name": "AI Route: QU_3897 - from Maas-Stillwater Dairy [MAA-STI-20] to Maas-Five Points Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-06-29 06:30:18.855000+00:00",
+          "end_time": "2025-07-03 02:30:18.855000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6327123761",
+              "name": "Maas-Stillwater Dairy [MAA-STI-20]",
+              "address": "Maas-Stillwater Dairy [MAA-STI-20]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-06-29 03:54:27.889000+00:00",
+              "departure_time": "2025-06-29 03:54:27.889000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6327123762",
+              "name": "Maas-Five Points Injection Site",
+              "address": "Maas-Five Points Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-06-29 04:39:25.733000+00:00",
+              "departure_time": "2025-06-29 18:02:52.074000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        },
+        {
+          "id": "6052092494",
+          "name": "AI Route: QU_3897 - from Maas-Stillwater Dairy [MAA-STI-20] to Maas-Five Points Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-06-30 22:30:18.568000+00:00",
+          "end_time": "2025-07-04 18:30:18.568000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6329483071",
+              "name": "Maas-Stillwater Dairy [MAA-STI-20]",
+              "address": "Maas-Stillwater Dairy [MAA-STI-20]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-06-30 21:03:44.567000+00:00",
+              "departure_time": "2025-06-30 21:03:44.567000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6329483072",
+              "name": "Maas-Five Points Injection Site",
+              "address": "Maas-Five Points Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-06-30 21:54:33.314000+00:00",
+              "departure_time": "2025-07-01 23:51:06.924000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        }
+      ],
+      "from Maas-Alhem Dairy [MAA-DEN-24] to Maas-Five Points Injection Site": [
+        {
+          "id": "6054877552",
+          "name": "AI Route: QU_3897 - from Maas-Alhem Dairy [MAA-DEN-24] to Maas-Five Points Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-07-11 23:30:34.571000+00:00",
+          "end_time": "2025-07-15 19:30:34.571000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6346436719",
+              "name": "Maas-Alhem Dairy [MAA-DEN-24]",
+              "address": "Maas-Alhem Dairy [MAA-DEN-24]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-12 00:06:44.876000+00:00",
+              "departure_time": "2025-07-12 00:06:44.876000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6346436720",
+              "name": "Maas-Five Points Injection Site",
+              "address": "Maas-Five Points Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-12 02:47:42.746000+00:00",
+              "departure_time": "2025-07-12 23:42:39.959000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        }
+      ]
+    },
+    "AI Route: QU_3039": {
+      "from Maas-FM Jersey Dairy [MAA-FMJ-20] to Maas-Calgren Injection Site": [
+        {
+          "id": "6051324926",
+          "name": "AI Route: QU_3039 - from Maas-FM Jersey Dairy [MAA-FMJ-20] to Maas-Calgren Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-06-27 16:35:30.865000+00:00",
+          "end_time": "2025-07-01 12:35:30.865000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6324836684",
+              "name": "Maas-FM Jersey Dairy [MAA-FMJ-20]",
+              "address": "Maas-FM Jersey Dairy [MAA-FMJ-20]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-06-28 00:44:01+00:00",
+              "departure_time": "2025-06-28 00:44:01+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6324836685",
+              "name": "Maas-Calgren Injection Site",
+              "address": "Maas-Calgren Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-06-28 00:56:26.999000+00:00",
+              "departure_time": "2025-06-30 18:15:38.001000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        }
+      ],
+      "from Maas-Channel Island Dairy [MAA-PAC-20] to Maas-Calgren Injection Site": [
+        {
+          "id": "6053409260",
+          "name": "AI Route: QU_3039 - from Maas-Channel Island Dairy [MAA-PAC-20] to Maas-Calgren Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-07-06 07:00:18.645000+00:00",
+          "end_time": "2025-07-10 03:00:18.645000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6337526409",
+              "name": "Maas-Channel Island Dairy [MAA-PAC-20]",
+              "address": "Maas-Channel Island Dairy [MAA-PAC-20]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-06 05:11:00.001000+00:00",
+              "departure_time": "2025-07-06 05:11:00.001000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6337526410",
+              "name": "Maas-Calgren Injection Site",
+              "address": "Maas-Calgren Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-06 15:57:21.001000+00:00",
+              "departure_time": "2025-07-07 17:46:42.002000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        },
+        {
+          "id": "6054262226",
+          "name": "AI Route: QU_3039 - from Maas-Channel Island Dairy [MAA-PAC-20] to Maas-Calgren Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-07-09 16:00:36.893000+00:00",
+          "end_time": "2025-07-13 12:00:36.893000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6342636497",
+              "name": "Maas-Channel Island Dairy [MAA-PAC-20]",
+              "address": "Maas-Channel Island Dairy [MAA-PAC-20]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-10 02:12:17.998000+00:00",
+              "departure_time": "2025-07-10 02:12:17.998000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6342636498",
+              "name": "Maas-Calgren Injection Site",
+              "address": "Maas-Calgren Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-10 02:31:57.995000+00:00",
+              "departure_time": "2025-07-11 11:30:39.004000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        }
+      ]
+    },
+    "AI Route: QU_9067": {
+      "from Maas-Lone Oak Dairy [MAA-LO2-20] to Maas-Five Points Injection Site": [
+        {
+          "id": "6051345193",
+          "name": "AI Route: QU_9067 - from Maas-Lone Oak Dairy [MAA-LO2-20] to Maas-Five Points Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-06-27 18:15:12.898000+00:00",
+          "end_time": "2025-07-01 14:15:12.898000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6324961977",
+              "name": "Maas-Lone Oak Dairy [MAA-LO2-20]",
+              "address": "Maas-Lone Oak Dairy [MAA-LO2-20]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-06-27 22:13:51.622000+00:00",
+              "departure_time": "2025-06-27 22:13:51.622000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6324961978",
+              "name": "Maas-Five Points Injection Site",
+              "address": "Maas-Five Points Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-06-27 22:31:33.690000+00:00",
+              "departure_time": "2025-06-29 19:57:10.049000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        }
+      ],
+      "from Maas-Alhem Dairy [MAA-DEN-24] to Maas-Five Points Injection Site": [
+        {
+          "id": "6052326233",
+          "name": "AI Route: QU_9067 - from Maas-Alhem Dairy [MAA-DEN-24] to Maas-Five Points Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-07-01 21:00:18.280000+00:00",
+          "end_time": "2025-07-05 17:00:18.280000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6330903988",
+              "name": "Maas-Alhem Dairy [MAA-DEN-24]",
+              "address": "Maas-Alhem Dairy [MAA-DEN-24]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-01 20:43:00.634000+00:00",
+              "departure_time": "2025-07-01 20:43:00.634000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6330903989",
+              "name": "Maas-Five Points Injection Site",
+              "address": "Maas-Five Points Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-01 23:31:51.987000+00:00",
+              "departure_time": "2025-07-02 22:22:29.672000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        },
+        {
+          "id": "6052996957",
+          "name": "AI Route: QU_9067 - from Maas-Alhem Dairy [MAA-DEN-24] to Maas-Five Points Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-07-04 11:30:33.595000+00:00",
+          "end_time": "2025-07-08 07:30:33.595000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6334960376",
+              "name": "Maas-Alhem Dairy [MAA-DEN-24]",
+              "address": "Maas-Alhem Dairy [MAA-DEN-24]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-04 08:38:03.713000+00:00",
+              "departure_time": "2025-07-04 08:38:03.713000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6334960377",
+              "name": "Maas-Five Points Injection Site",
+              "address": "Maas-Five Points Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-04 10:40:06.928000+00:00",
+              "departure_time": "2025-07-05 03:32:08.712000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        }
+      ],
+      "from Maas-Stillwater Dairy [MAA-STI-20] to Maas-Five Points Injection Site": [
+        {
+          "id": "6053623219",
+          "name": "AI Route: QU_9067 - from Maas-Stillwater Dairy [MAA-STI-20] to Maas-Five Points Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-07-07 04:30:19.126000+00:00",
+          "end_time": "2025-07-11 00:30:19.126000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6338773826",
+              "name": "Maas-Stillwater Dairy [MAA-STI-20]",
+              "address": "Maas-Stillwater Dairy [MAA-STI-20]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-07 02:40:44.950000+00:00",
+              "departure_time": "2025-07-07 02:40:44.950000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6338773827",
+              "name": "Maas-Five Points Injection Site",
+              "address": "Maas-Five Points Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-07 03:23:25.576000+00:00",
+              "departure_time": "2025-07-08 09:49:12.811000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        }
+      ]
+    },
+    "AI Route: QU_0003": {
+      "from Maas-JDS Dairy [MAA-MER-24] to Maas-Helm Injection Site": [
+        {
+          "id": "6051517733",
+          "name": "AI Route: QU_0003 - from Maas-JDS Dairy [MAA-MER-24] to Maas-Helm Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-06-28 11:30:35.077000+00:00",
+          "end_time": "2025-07-02 07:30:35.077000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6325999585",
+              "name": "Maas-JDS Dairy [MAA-MER-24]",
+              "address": "Maas-JDS Dairy [MAA-MER-24]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-06-28 10:40:37.520000+00:00",
+              "departure_time": "2025-06-28 10:40:37.520000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6325999586",
+              "name": "Maas-Helm Injection Site",
+              "address": "Maas-Helm Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-06-28 12:30:27.924000+00:00",
+              "departure_time": "2025-07-01 00:09:52.909000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        },
+        {
+          "id": "6052582089",
+          "name": "AI Route: QU_0003 - from Maas-JDS Dairy [MAA-MER-24] to Maas-Helm Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-07-02 21:30:15.490000+00:00",
+          "end_time": "2025-07-06 17:30:15.490000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6332503793",
+              "name": "Maas-JDS Dairy [MAA-MER-24]",
+              "address": "Maas-JDS Dairy [MAA-MER-24]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-02 19:26:49.922000+00:00",
+              "departure_time": "2025-07-02 19:26:49.922000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6332503794",
+              "name": "Maas-Helm Injection Site",
+              "address": "Maas-Helm Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-02 21:19:20.205000+00:00",
+              "departure_time": "2025-07-04 22:04:32.171000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        },
+        {
+          "id": "6054399546",
+          "name": "AI Route: QU_0003 - from Maas-JDS Dairy [MAA-MER-24] to Maas-Helm Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-07-10 03:30:33.327000+00:00",
+          "end_time": "2025-07-13 23:30:33.327000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6343481929",
+              "name": "Maas-JDS Dairy [MAA-MER-24]",
+              "address": "Maas-JDS Dairy [MAA-MER-24]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-10 07:23:36.359000+00:00",
+              "departure_time": "2025-07-10 07:23:36.359000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6343481930",
+              "name": "Maas-Helm Injection Site",
+              "address": "Maas-Helm Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-10 09:07:53.422000+00:00",
+              "departure_time": "2025-07-11 00:13:29.785000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        },
+        {
+          "id": "6054439259",
+          "name": "AI Route: QU_0003 - from Maas-JDS Dairy [MAA-MER-24] to Maas-Helm Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-07-10 09:00:33.910000+00:00",
+          "end_time": "2025-07-14 05:00:33.910000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6343783798",
+              "name": "Maas-JDS Dairy [MAA-MER-24]",
+              "address": "Maas-JDS Dairy [MAA-MER-24]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": null,
+              "departure_time": "2025-07-10 09:00:33.910000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6343783799",
+              "name": "Maas-Helm Injection Site",
+              "address": "Maas-Helm Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-10 09:07:53.422000+00:00",
+              "departure_time": "2025-07-11 00:13:29.785000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        }
+      ]
+    },
+    "AI Route: QU_3854": {
+      "from Maas-Channel Island Dairy [MAA-PAC-20] to Maas-Calgren Injection Site": [
+        {
+          "id": "6051517849",
+          "name": "AI Route: QU_3854 - from Maas-Channel Island Dairy [MAA-PAC-20] to Maas-Calgren Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-06-28 12:30:34.774000+00:00",
+          "end_time": "2025-07-02 08:30:34.774000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6326056243",
+              "name": "Maas-Channel Island Dairy [MAA-PAC-20]",
+              "address": "Maas-Channel Island Dairy [MAA-PAC-20]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-06-28 16:13:55.378000+00:00",
+              "departure_time": "2025-06-28 16:13:55.378000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6326056244",
+              "name": "Maas-Calgren Injection Site",
+              "address": "Maas-Calgren Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-06-28 16:34:09.670000+00:00",
+              "departure_time": "2025-06-30 05:27:36.752000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        }
+      ],
+      "from Maas-Avalon Dairy [DGE-AVA-23] to Maas-Calgren Injection Site": [
+        {
+          "id": "6053399657",
+          "name": "AI Route: QU_3854 - from Maas-Avalon Dairy [DGE-AVA-23] to Maas-Calgren Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-07-06 05:00:33.866000+00:00",
+          "end_time": "2025-07-10 01:00:33.866000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6337411789",
+              "name": "Maas-Avalon Dairy [DGE-AVA-23]",
+              "address": "Maas-Avalon Dairy [DGE-AVA-23]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-06 02:14:29.703000+00:00",
+              "departure_time": "2025-07-06 02:14:29.703000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6337411790",
+              "name": "Maas-Calgren Injection Site",
+              "address": "Maas-Calgren Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-06 02:53:54.350000+00:00",
+              "departure_time": "2025-07-06 16:52:02.389000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        }
+      ]
+    },
+    "AI Route: QU_3869": {
+      "from Maas-Alhem Dairy [MAA-DEN-24] to Maas-Five Points Injection Site": [
+        {
+          "id": "6051595444",
+          "name": "AI Route: QU_3869 - from Maas-Alhem Dairy [MAA-DEN-24] to Maas-Five Points Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-06-28 19:30:34.013000+00:00",
+          "end_time": "2025-07-02 15:30:34.013000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6326472651",
+              "name": "Maas-Alhem Dairy [MAA-DEN-24]",
+              "address": "Maas-Alhem Dairy [MAA-DEN-24]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-06-28 20:52:59.006000+00:00",
+              "departure_time": "2025-06-28 20:52:59.006000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6326472652",
+              "name": "Maas-Five Points Injection Site",
+              "address": "Maas-Five Points Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-06-28 22:56:29.003000+00:00",
+              "departure_time": "2025-06-30 14:11:06.999000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        }
+      ],
+      "from Maas-Stillwater Dairy [MAA-STI-20] to Maas-Five Points Injection Site": [
+        {
+          "id": "6052315759",
+          "name": "AI Route: QU_3869 - from Maas-Stillwater Dairy [MAA-STI-20] to Maas-Five Points Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-07-01 20:00:35.651000+00:00",
+          "end_time": "2025-07-05 16:00:35.651000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6330843300",
+              "name": "Maas-Stillwater Dairy [MAA-STI-20]",
+              "address": "Maas-Stillwater Dairy [MAA-STI-20]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": null,
+              "departure_time": "2025-07-01 20:00:35.651000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6330843301",
+              "name": "Maas-Five Points Injection Site",
+              "address": "Maas-Five Points Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-01 17:20:47.996000+00:00",
+              "departure_time": "2025-07-02 08:45:05+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        },
+        {
+          "id": "6052836892",
+          "name": "AI Route: QU_3869 - from Maas-Stillwater Dairy [MAA-STI-20] to Maas-Five Points Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-07-03 20:30:34.114000+00:00",
+          "end_time": "2025-07-07 16:30:34.114000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6333997659",
+              "name": "Maas-Stillwater Dairy [MAA-STI-20]",
+              "address": "Maas-Stillwater Dairy [MAA-STI-20]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-03 19:05:26.001000+00:00",
+              "departure_time": "2025-07-03 19:05:26.001000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6333997660",
+              "name": "Maas-Five Points Injection Site",
+              "address": "Maas-Five Points Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-03 19:51:47.999000+00:00",
+              "departure_time": "2025-07-04 10:58:06.841000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        },
+        {
+          "id": "6053399831",
+          "name": "AI Route: QU_3869 - from Maas-Stillwater Dairy [MAA-STI-20] to Maas-Five Points Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-07-06 05:30:32.351000+00:00",
+          "end_time": "2025-07-10 01:30:32.351000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6337424813",
+              "name": "Maas-Stillwater Dairy [MAA-STI-20]",
+              "address": "Maas-Stillwater Dairy [MAA-STI-20]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-06 07:01:25.003000+00:00",
+              "departure_time": "2025-07-06 07:01:25.003000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6337424814",
+              "name": "Maas-Five Points Injection Site",
+              "address": "Maas-Five Points Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-06 07:55:05.999000+00:00",
+              "departure_time": "2025-07-07 05:19:11.004000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        },
+        {
+          "id": "6054357538",
+          "name": "AI Route: QU_3869 - from Maas-Stillwater Dairy [MAA-STI-20] to Maas-Five Points Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-07-10 00:00:23.117000+00:00",
+          "end_time": "2025-07-13 20:00:23.117000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6343216545",
+              "name": "Maas-Stillwater Dairy [MAA-STI-20]",
+              "address": "Maas-Stillwater Dairy [MAA-STI-20]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-10 03:24:15.009000+00:00",
+              "departure_time": "2025-07-10 03:24:15.009000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6343216546",
+              "name": "Maas-Five Points Injection Site",
+              "address": "Maas-Five Points Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-10 04:08:49.997000+00:00",
+              "departure_time": "2025-07-10 15:35:47.006000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        }
+      ]
+    },
+    "AI Route: QU_3899": {
+      "from Maas-Channel Island Dairy [MAA-PAC-20] to Maas-Calgren Injection Site": [
+        {
+          "id": "6051857479",
+          "name": "AI Route: QU_3899 - from Maas-Channel Island Dairy [MAA-PAC-20] to Maas-Calgren Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-06-30 00:30:32.916000+00:00",
+          "end_time": "2025-07-03 20:30:32.916000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6328117261",
+              "name": "Maas-Channel Island Dairy [MAA-PAC-20]",
+              "address": "Maas-Channel Island Dairy [MAA-PAC-20]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-06-30 06:28:26.786000+00:00",
+              "departure_time": "2025-06-30 06:28:26.786000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6328117262",
+              "name": "Maas-Calgren Injection Site",
+              "address": "Maas-Calgren Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-06-30 06:49:42.267000+00:00",
+              "departure_time": "2025-07-01 09:32:30.109000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        },
+        {
+          "id": "6051947917",
+          "name": "AI Route: QU_3899 - from Maas-Channel Island Dairy [MAA-PAC-20] to Maas-Calgren Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-06-30 08:00:33.752000+00:00",
+          "end_time": "2025-07-04 04:00:33.752000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6328608677",
+              "name": "Maas-Channel Island Dairy [MAA-PAC-20]",
+              "address": "Maas-Channel Island Dairy [MAA-PAC-20]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": null,
+              "departure_time": "2025-06-30 08:00:33.752000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6328608678",
+              "name": "Maas-Calgren Injection Site",
+              "address": "Maas-Calgren Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-06-30 06:49:42.267000+00:00",
+              "departure_time": "2025-07-01 09:32:30.109000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        },
+        {
+          "id": "6051960414",
+          "name": "AI Route: QU_3899 - from Maas-Channel Island Dairy [MAA-PAC-20] to Maas-Calgren Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-06-30 09:30:35.966000+00:00",
+          "end_time": "2025-07-04 05:30:35.966000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6328680494",
+              "name": "Maas-Channel Island Dairy [MAA-PAC-20]",
+              "address": "Maas-Channel Island Dairy [MAA-PAC-20]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": null,
+              "departure_time": "2025-06-30 09:30:35.966000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6328680495",
+              "name": "Maas-Calgren Injection Site",
+              "address": "Maas-Calgren Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-06-30 06:49:42.267000+00:00",
+              "departure_time": "2025-07-01 09:32:30.109000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        }
+      ],
+      "from Maas-FM Jersey Dairy [MAA-FMJ-20] to Maas-Calgren Injection Site": [
+        {
+          "id": "6053467028",
+          "name": "AI Route: QU_3899 - from Maas-FM Jersey Dairy [MAA-FMJ-20] to Maas-Calgren Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-07-06 12:00:18.125000+00:00",
+          "end_time": "2025-07-10 08:00:18.125000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6337816866",
+              "name": "Maas-FM Jersey Dairy [MAA-FMJ-20]",
+              "address": "Maas-FM Jersey Dairy [MAA-FMJ-20]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-07 07:14:03.113000+00:00",
+              "departure_time": "2025-07-07 07:14:03.113000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6337816867",
+              "name": "Maas-Calgren Injection Site",
+              "address": "Maas-Calgren Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-07 07:27:12.044000+00:00",
+              "departure_time": "2025-07-08 13:39:28.377000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        }
+      ]
+    },
+    "AI Route: QU_0006": {
+      "from Maas-JDS Dairy [MAA-MER-24] to Maas-Helm Injection Site": [
+        {
+          "id": "6051876681",
+          "name": "AI Route: QU_0006 - from Maas-JDS Dairy [MAA-MER-24] to Maas-Helm Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-06-30 01:00:18.839000+00:00",
+          "end_time": "2025-07-03 21:00:18.839000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6328179180",
+              "name": "Maas-JDS Dairy [MAA-MER-24]",
+              "address": "Maas-JDS Dairy [MAA-MER-24]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-06-30 08:55:16.425000+00:00",
+              "departure_time": "2025-06-30 08:55:16.425000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6328179181",
+              "name": "Maas-Helm Injection Site",
+              "address": "Maas-Helm Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-06-30 10:37:58.405000+00:00",
+              "departure_time": "2025-07-01 11:58:07.972000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        },
+        {
+          "id": "6053234013",
+          "name": "AI Route: QU_0006 - from Maas-JDS Dairy [MAA-MER-24] to Maas-Helm Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-07-05 12:00:34.706000+00:00",
+          "end_time": "2025-07-09 08:00:34.706000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6336402480",
+              "name": "Maas-JDS Dairy [MAA-MER-24]",
+              "address": "Maas-JDS Dairy [MAA-MER-24]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-05 10:02:20.676000+00:00",
+              "departure_time": "2025-07-05 10:02:20.676000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6336402481",
+              "name": "Maas-Helm Injection Site",
+              "address": "Maas-Helm Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-05 11:46:13.460000+00:00",
+              "departure_time": "2025-07-08 20:15:46.091000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        }
+      ]
+    },
+    "AI Route: QU_9050": {
+      "from Maas-FM Jersey Dairy [MAA-FMJ-20] to Maas-Calgren Injection Site": [
+        {
+          "id": "6052205112",
+          "name": "AI Route: QU_9050 - from Maas-FM Jersey Dairy [MAA-FMJ-20] to Maas-Calgren Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-07-01 09:30:51.194000+00:00",
+          "end_time": "2025-07-05 05:30:51.195000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6330168582",
+              "name": "Maas-FM Jersey Dairy [MAA-FMJ-20]",
+              "address": "Maas-FM Jersey Dairy [MAA-FMJ-20]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-01 08:31:06.915000+00:00",
+              "departure_time": "2025-07-01 08:31:06.915000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6330168583",
+              "name": "Maas-Calgren Injection Site",
+              "address": "Maas-Calgren Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-01 08:44:07.315000+00:00",
+              "departure_time": "2025-07-02 05:43:52.914000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        },
+        {
+          "id": "6053959569",
+          "name": "AI Route: QU_9050 - from Maas-FM Jersey Dairy [MAA-FMJ-20] to Maas-Calgren Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-07-08 12:00:33.931000+00:00",
+          "end_time": "2025-07-12 08:00:33.931000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6340853670",
+              "name": "Maas-FM Jersey Dairy [MAA-FMJ-20]",
+              "address": "Maas-FM Jersey Dairy [MAA-FMJ-20]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-09 13:13:30.361000+00:00",
+              "departure_time": "2025-07-09 13:13:30.361000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6340853671",
+              "name": "Maas-Calgren Injection Site",
+              "address": "Maas-Calgren Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-09 13:26:39.241000+00:00",
+              "departure_time": "2025-07-10 12:57:02.920000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        },
+        {
+          "id": "6054194128",
+          "name": "AI Route: QU_9050 - from Maas-FM Jersey Dairy [MAA-FMJ-20] to Maas-Calgren Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-07-09 10:30:29.286000+00:00",
+          "end_time": "2025-07-13 06:30:29.286000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6342278211",
+              "name": "Maas-FM Jersey Dairy [MAA-FMJ-20]",
+              "address": "Maas-FM Jersey Dairy [MAA-FMJ-20]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": null,
+              "departure_time": "2025-07-09 10:30:29.286000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6342278212",
+              "name": "Maas-Calgren Injection Site",
+              "address": "Maas-Calgren Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-09 13:26:39.241000+00:00",
+              "departure_time": "2025-07-10 12:57:02.920000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        }
+      ]
+    },
+    "AI Route: QU_3038": {
+      "from Maas-Avalon Dairy [DGE-AVA-23] to Maas-Calgren Injection Site": [
+        {
+          "id": "6052418923",
+          "name": "AI Route: QU_3038 - from Maas-Avalon Dairy [DGE-AVA-23] to Maas-Calgren Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-07-02 06:00:18.967000+00:00",
+          "end_time": "2025-07-06 02:00:18.967000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6331467772",
+              "name": "Maas-Avalon Dairy [DGE-AVA-23]",
+              "address": "Maas-Avalon Dairy [DGE-AVA-23]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-02 04:48:01.003000+00:00",
+              "departure_time": "2025-07-02 04:48:01.003000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6331467773",
+              "name": "Maas-Calgren Injection Site",
+              "address": "Maas-Calgren Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-02 05:25:47.997000+00:00",
+              "departure_time": "2025-07-03 12:53:00.251000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        },
+        {
+          "id": "6054336786",
+          "name": "AI Route: QU_3038 - from Maas-Avalon Dairy [DGE-AVA-23] to Maas-Calgren Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-07-09 22:30:34.201000+00:00",
+          "end_time": "2025-07-13 18:30:34.201000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6343140925",
+              "name": "Maas-Avalon Dairy [DGE-AVA-23]",
+              "address": "Maas-Avalon Dairy [DGE-AVA-23]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-09 23:11:28.004000+00:00",
+              "departure_time": "2025-07-09 23:11:28.004000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6343140926",
+              "name": "Maas-Calgren Injection Site",
+              "address": "Maas-Calgren Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-11 10:49:41.001000+00:00",
+              "departure_time": "2025-07-12 03:43:23.007000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        }
+      ],
+      "from Maas-Channel Island Dairy [MAA-PAC-20] to Maas-Calgren Injection Site": [
+        {
+          "id": "6053218753",
+          "name": "AI Route: QU_3038 - from Maas-Channel Island Dairy [MAA-PAC-20] to Maas-Calgren Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-07-05 10:30:33.210000+00:00",
+          "end_time": "2025-07-09 06:30:33.210000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6336311119",
+              "name": "Maas-Channel Island Dairy [MAA-PAC-20]",
+              "address": "Maas-Channel Island Dairy [MAA-PAC-20]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-06 04:10:36+00:00",
+              "departure_time": "2025-07-06 04:10:36+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6336311121",
+              "name": "Maas-Calgren Injection Site",
+              "address": "Maas-Calgren Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-06 04:31:21.997000+00:00",
+              "departure_time": "2025-07-07 07:57:20.001000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        },
+        {
+          "id": "6053243407",
+          "name": "AI Route: QU_3038 - from Maas-Channel Island Dairy [MAA-PAC-20] to Maas-Calgren Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-07-05 13:00:17.683000+00:00",
+          "end_time": "2025-07-09 09:00:17.683000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6336458882",
+              "name": "Maas-Channel Island Dairy [MAA-PAC-20]",
+              "address": "Maas-Channel Island Dairy [MAA-PAC-20]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": null,
+              "departure_time": "2025-07-05 13:00:17.683000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6336458883",
+              "name": "Maas-Calgren Injection Site",
+              "address": "Maas-Calgren Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-06 04:31:21.997000+00:00",
+              "departure_time": "2025-07-07 07:57:20.001000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        }
+      ]
+    },
+    "AI Route: QU_3035": {
+      "from Maas-Avalon Dairy [DGE-AVA-23] to Maas-Calgren Injection Site": [
+        {
+          "id": "6052998669",
+          "name": "AI Route: QU_3035 - from Maas-Avalon Dairy [DGE-AVA-23] to Maas-Calgren Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-07-04 13:00:34.133000+00:00",
+          "end_time": "2025-07-08 09:00:34.133000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6335027707",
+              "name": "Maas-Avalon Dairy [DGE-AVA-23]",
+              "address": "Maas-Avalon Dairy [DGE-AVA-23]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-04 15:18:32.004000+00:00",
+              "departure_time": "2025-07-04 15:18:32.004000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6335027708",
+              "name": "Maas-Calgren Injection Site",
+              "address": "Maas-Calgren Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-04 15:56:59.001000+00:00",
+              "departure_time": "2025-07-06 01:05:14.001000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        },
+        {
+          "id": "6053775236",
+          "name": "AI Route: QU_3035 - from Maas-Avalon Dairy [DGE-AVA-23] to Maas-Calgren Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-07-07 17:30:35.675000+00:00",
+          "end_time": "2025-07-11 13:30:35.675000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6339684523",
+              "name": "Maas-Avalon Dairy [DGE-AVA-23]",
+              "address": "Maas-Avalon Dairy [DGE-AVA-23]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-07 16:33:42.005000+00:00",
+              "departure_time": "2025-07-07 16:33:42.005000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6339684524",
+              "name": "Maas-Calgren Injection Site",
+              "address": "Maas-Calgren Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-07 17:16:16.005000+00:00",
+              "departure_time": "2025-07-08 23:37:00.999000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        }
+      ],
+      "from Maas-Channel Island Dairy [MAA-PAC-20] to Maas-Calgren Injection Site": [
+        {
+          "id": "6054580438",
+          "name": "AI Route: QU_3035 - from Maas-Channel Island Dairy [MAA-PAC-20] to Maas-Calgren Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-07-10 21:00:18.647000+00:00",
+          "end_time": "2025-07-14 17:00:18.648000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6344598463",
+              "name": "Maas-Channel Island Dairy [MAA-PAC-20]",
+              "address": "Maas-Channel Island Dairy [MAA-PAC-20]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-10 19:22:53+00:00",
+              "departure_time": "2025-07-10 19:22:53+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6344598464",
+              "name": "Maas-Calgren Injection Site",
+              "address": "Maas-Calgren Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-10 19:43:38+00:00",
+              "departure_time": "2025-07-11 14:42:20.018000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        }
+      ]
+    },
+    "AI Route: QU_9257": {
+      "from Maas-Stillwater Dairy [MAA-STI-20] to Maas-Five Points Injection Site": [
+        {
+          "id": "6054633444",
+          "name": "AI Route: QU_9257 - from Maas-Stillwater Dairy [MAA-STI-20] to Maas-Five Points Injection Site",
+          "driver_id": null,
+          "driver_name": null,
+          "vehicle_id": null,
+          "vehicle_name": null,
+          "start_time": "2025-07-11 01:30:18.724000+00:00",
+          "end_time": "2025-07-14 21:30:18.724000+00:00",
+          "start_location": null,
+          "end_location": null,
+          "distance_meters": null,
+          "duration_seconds": null,
+          "stops": [
+            {
+              "id": "6344933299",
+              "name": "Maas-Stillwater Dairy [MAA-STI-20]",
+              "address": "Maas-Stillwater Dairy [MAA-STI-20]",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-10 22:39:35.261000+00:00",
+              "departure_time": "2025-07-10 22:39:35.261000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            },
+            {
+              "id": "6344987600",
+              "name": "Maas-Five Points Injection Site",
+              "address": "Maas-Five Points Injection Site",
+              "latitude": 0.0,
+              "longitude": 0.0,
+              "arrival_time": "2025-07-10 23:28:43.149000+00:00",
+              "departure_time": "2025-07-11 21:25:16.718000+00:00",
+              "duration_seconds": null,
+              "notes": ""
+            }
+          ],
+          "points": []
+        }
+      ]
+    }
+  }
+}

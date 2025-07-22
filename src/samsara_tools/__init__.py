@@ -6,8 +6,14 @@ __email__ = "your.email@example.com"
 
 from .core.client import SamsaraClient
 from .core.geofence_query import SamsaraGeofenceQuery
+from .core.route_service import RouteService
+from .models.route import Route, RoutePoint, RouteStop
 
 __all__ = [
     "SamsaraClient",
     "SamsaraGeofenceQuery",
+    "RouteService",
+    "Route",
+    "RoutePoint",
+    "RouteStop",
 ] 

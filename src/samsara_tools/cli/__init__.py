@@ -1,5 +1,6 @@
 """Command-line interface for Samsara Tools."""
 
-from .main import main
+# Remove the main import to prevent RuntimeWarning when running as script
+# from .main import main
 
-__all__ = ["main"] 
+__all__ = [] 

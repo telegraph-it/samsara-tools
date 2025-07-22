@@ -7,9 +7,10 @@ A comprehensive Python toolkit for interacting with the Samsara API. Query gatew
 - **Gateway Management**: List and monitor gateway connection status
 - **Geofence Queries**: Find geofences by tag with detailed location data
 - **Tag Management**: List and search through all available tags
+- **Route Data**: Query and export route information with GPS tracking
 - **Rate Limiting**: Built-in API rate limiting with exponential backoff
 - **Caching**: Smart caching to reduce API calls and improve performance
-- **Multiple Output Formats**: Export data to JSON and CSV formats
+- **Multiple Output Formats**: Export data to JSON, CSV, and GPX formats
 - **CLI Interface**: Easy-to-use command-line interface
 - **Python API**: Use as a library in your own Python projects
 
@@ -72,12 +73,34 @@ uv run samsara-tools list-gateways
 uv run samsara-tools list-gateways --no-cache
 ```
 
+#### Query routes
+```bash
+# Query routes for last 7 days
+uv run samsara-tools routes query --start "2024-01-01"
+
+# Query with specific date range
+uv run samsara-tools routes query --start "2024-01-01" --end "2024-01-31"
+
+# Include GPS tracking points
+uv run samsara-tools routes query --start "2024-01-01" --include-points
+
+# Export to different formats
+uv run samsara-tools routes query --start "2024-01-01" --format gpx --output routes.gpx
+```
+
+#### Get specific route
+```bash
+# Get route by ID
+uv run samsara-tools routes get route_id_123 --include-points --format gpx
+```
+
 ### Python API
 
 Use the package as a library in your Python code:
 
 ```python
-from samsara_tools import SamsaraClient, SamsaraGeofenceQuery
+from samsara_tools import SamsaraClient, SamsaraGeofenceQuery, RouteService
+from datetime import datetime, timedelta
 import os
 
 # Initialize client
@@ -92,10 +115,16 @@ print(f"Found {len(tags)} tags")
 geo_client = SamsaraGeofenceQuery(api_token)
 geofences = geo_client.query_geofences_by_tag("Maas")
 
-# Save results
-if geofences:
-    saved_files = geo_client.save_results(geofences, "Maas")
-    print(f"Saved to: {saved_files}")
+# Query routes
+route_service = RouteService(api_token)
+routes = route_service.query_routes(
+    start_time=datetime.now() - timedelta(days=7),
+    end_time=datetime.now(),
+    include_points=True
+)
+
+# Save routes in different formats
+route_service.save_routes(routes, format='gpx')
 ```
 
 ## Project Structure
@@ -107,10 +136,14 @@ samsara-api-tools/
 │   ├── cli/                    # Command-line interface
 │   │   ├── __init__.py
 │   │   └── main.py            # CLI entry point
-│   └── core/                   # Core functionality
+│   ├── core/                   # Core functionality
+│   │   ├── __init__.py
+│   │   ├── client.py          # Base API client
+│   │   ├── geofence_query.py  # Geofence querying
+│   │   └── route_service.py   # Route data service
+│   └── models/                 # Data models
 │       ├── __init__.py
-│       ├── client.py          # Base API client
-│       └── geofence_query.py  # Geofence querying
+│       └── route.py           # Route data models
 ├── legacy/                     # Original scripts (for reference)
 ├── tests/                      # Test suite
 ├── docs/                       # Documentation
@@ -125,6 +158,8 @@ samsara-api-tools/
 ```
 
 ## API Documentation
+
+For detailed route feature documentation, see [ROUTES.md](ROUTES.md).
 
 ### SamsaraClient
 
@@ -161,6 +196,28 @@ geo_client.print_geofence_summary(geofences, "Maas")
 
 # Save results
 saved_files = geo_client.save_results(geofences, "Maas")
+```
+
+### RouteService
+
+Service for querying and exporting route data.
+
+```python
+route_service = RouteService(api_token)
+
+# Query routes with filters
+routes = route_service.query_routes(
+    start_time=datetime(2024, 1, 1),
+    end_time=datetime(2024, 1, 31),
+    vehicle_id="vehicle_123",
+    include_points=True
+)
+
+# Get specific route
+route = route_service.get_route_by_id("route_id", include_points=True)
+
+# Export routes
+route_service.save_routes(routes, format='gpx')  # Also supports 'json', 'csv'
 ```
 
 ## Development

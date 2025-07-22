@@ -135,6 +135,7 @@ class SamsaraClient:
         """
         self.api_token = api_token
         self.base_url = base_url.rstrip('/')
+        self.cache_dir = cache_dir
         self.headers = {
             "Authorization": f"Bearer {api_token}",
             "Accept": "application/json",
@@ -258,4 +259,97 @@ class SamsaraClient:
             return self.rate_limiter.execute_with_retry(make_request)
         except requests.exceptions.RequestException as e:
             logger.error(f"Error fetching address details for {address_id}: {e}")
+            return None
+    
+    def get_all_routes(self, start_time: datetime, end_time: datetime, 
+                      vehicle_id: Optional[str] = None, driver_id: Optional[str] = None,
+                      use_cache: bool = True) -> List[Dict]:
+        """Get all routes within a time range."""
+        cache_key = f"routes_{start_time.isoformat()}_{end_time.isoformat()}"
+        if vehicle_id:
+            cache_key += f"_vehicle_{vehicle_id}"
+        if driver_id:
+            cache_key += f"_driver_{driver_id}"
+        
+        cache_file = self.cache_dir / 'routes' / f"{cache_key}.json"
+        cache_file.parent.mkdir(parents=True, exist_ok=True)
+        
+        if use_cache:
+            cached_data = self.cache_manager.load_cache(cache_file)
+            if cached_data:
+                logger.info(f"Using cached routes data from {cache_file}")
+                return cached_data
+        
+        all_routes = []
+        params = {
+            'startTime': start_time.isoformat() + 'Z',
+            'endTime': end_time.isoformat() + 'Z',
+        }
+        
+        if vehicle_id:
+            params['vehicleIds'] = vehicle_id
+        if driver_id:
+            params['driverIds'] = driver_id
+            
+        url = f"{self.base_url}/fleet/routes"
+        
+        try:
+            while url:
+                def make_request():
+                    response = requests.get(url, headers=self.headers, params=params if 'routes' in url else None)
+                    response.raise_for_status()
+                    return response.json()
+                
+                data = self.rate_limiter.execute_with_retry(make_request)
+                routes = data.get('data', [])
+                all_routes.extend(routes)
+                
+                # Check for pagination
+                pagination = data.get('pagination', {})
+                if pagination.get('hasNextPage', False):
+                    cursor = pagination.get('endCursor', '')
+                    url = f"{self.base_url}/fleet/routes?after={cursor}"
+                else:
+                    url = None
+                    
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Error fetching routes: {e}")
+            return []
+        
+        # Cache the results
+        if all_routes:
+            self.cache_manager.save_cache(cache_file, all_routes)
+        
+        logger.info(f"Fetched {len(all_routes)} routes from API")
+        return all_routes
+    
+    def get_route_details(self, route_id: str) -> Optional[Dict]:
+        """Get detailed information for a specific route."""
+        url = f"{self.base_url}/fleet/routes/{route_id}"
+        
+        try:
+            def make_request():
+                response = requests.get(url, headers=self.headers)
+                response.raise_for_status()
+                return response.json()['data']
+            
+            return self.rate_limiter.execute_with_retry(make_request)
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Error fetching route details for {route_id}: {e}")
+            return None
+    
+    def get_route_path(self, route_id: str, include_stops: bool = True) -> Optional[Dict]:
+        """Get the GPS path and stops for a specific route."""
+        url = f"{self.base_url}/fleet/routes/{route_id}/path"
+        params = {'includeStops': include_stops}
+        
+        try:
+            def make_request():
+                response = requests.get(url, headers=self.headers, params=params)
+                response.raise_for_status()
+                return response.json()['data']
+            
+            return self.rate_limiter.execute_with_retry(make_request)
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Error fetching route path for {route_id}: {e}")
             return None 
