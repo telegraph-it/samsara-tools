@@ -62,37 +62,40 @@ def main():
         
         print(f"Found {len(trips)} trips:")
         for i, trip in enumerate(trips[:3], 1):  # Show first 3
-            trip_id = trip.get('id', 'Unknown')
-            trip_start = trip.get('startTime', 'Unknown')
-            trip_end = trip.get('endTime', 'Unknown')
+            trip_start_ms = trip.get('startMs', 0)
+            trip_end_ms = trip.get('endMs', 0)
+            trip_start = datetime.fromtimestamp(trip_start_ms / 1000).strftime('%Y-%m-%d %H:%M:%S') if trip_start_ms else 'Unknown'
+            trip_end = datetime.fromtimestamp(trip_end_ms / 1000).strftime('%Y-%m-%d %H:%M:%S') if trip_end_ms else 'Unknown'
             distance_m = trip.get('distanceMeters', 0)
             distance_mi = distance_m / 1609.34 if distance_m else 0
+            start_location = trip.get('startLocation', 'Unknown')
+            end_location = trip.get('endLocation', 'Unknown')
             
-            print(f"  {i}. Trip {trip_id}")
+            print(f"  {i}. Trip from {start_location}")
             print(f"     Start: {trip_start}")
             print(f"     End: {trip_end}")
             print(f"     Distance: {distance_mi:.1f} miles")
+            print(f"     End Location: {end_location}")
         
-        # Example 3: Get detailed path for a trip
+        # Example 3: Trip details already available in response
         if trips:
-            print("\n3. Getting detailed path for first trip...")
+            print("\n3. Trip details from legacy API:")
             first_trip = trips[0]
-            trip_id = first_trip['id']
+            start_coords = first_trip.get('startCoordinates', {})
+            end_coords = first_trip.get('endCoordinates', {})
+            start_addr = first_trip.get('startAddress', {})
+            end_addr = first_trip.get('endAddress', {})
             
-            path_data = client.get_trip_path(trip_id)
-            if path_data:
-                points = path_data.get('points', [])
-                stops = path_data.get('stops', [])
-                print(f"Trip {trip_id} has {len(points)} GPS points and {len(stops)} stops")
-                
-                if stops:
-                    print("Stops:")
-                    for stop in stops[:3]:  # Show first 3 stops
-                        name = stop.get('name', 'Unknown')
-                        arrival = stop.get('arrivalTime', 'Unknown')
-                        print(f"  - {name} (Arrival: {arrival})")
-            else:
-                print("Could not retrieve trip path data")
+            print(f"First trip coordinates:")
+            print(f"  Start: {start_coords.get('latitude', 'N/A')}, {start_coords.get('longitude', 'N/A')}")
+            print(f"  End: {end_coords.get('latitude', 'N/A')}, {end_coords.get('longitude', 'N/A')}")
+            
+            if start_addr:
+                print(f"  Start Address: {start_addr.get('name', 'N/A')} - {start_addr.get('address', 'N/A')}")
+            if end_addr:
+                print(f"  End Address: {end_addr.get('name', 'N/A')} - {end_addr.get('address', 'N/A')}")
+            
+            print(f"Note: Legacy API doesn't support separate trip path endpoint")
     
     print("\n✓ Example completed successfully!")
     print("\nNext steps:")

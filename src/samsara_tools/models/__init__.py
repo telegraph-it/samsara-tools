@@ -1,10 +1,16 @@
 """Data models for Samsara API responses."""
 
-# Future: Add Pydantic models for API responses
-# from .gateway import Gateway
-# from .geofence import Geofence  
-# from .tag import Tag
-
 from .route import Route, RoutePoint, RouteStop
+from .trailer import Trailer, TrailerLocation
+from .trip import Trip, TripPoint, TripStop
 
-__all__ = ["Route", "RoutePoint", "RouteStop"] 
+__all__ = [
+    "Route",
+    "RoutePoint",
+    "RouteStop",
+    "Trailer",
+    "TrailerLocation",
+    "Trip",
+    "TripPoint",
+    "TripStop",
+]

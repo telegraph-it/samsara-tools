@@ -8,6 +8,8 @@ from .core.client import SamsaraClient
 from .core.geofence_query import SamsaraGeofenceQuery
 from .core.route_service import RouteService
 from .models.route import Route, RoutePoint, RouteStop
+from .models.trailer import Trailer, TrailerLocation
+from .models.trip import Trip, TripPoint, TripStop
 
 __all__ = [
     "SamsaraClient",
@@ -16,4 +18,9 @@ __all__ = [
     "Route",
     "RoutePoint",
     "RouteStop",
+    "Trailer",
+    "TrailerLocation",
+    "Trip",
+    "TripPoint",
+    "TripStop",
 ] 

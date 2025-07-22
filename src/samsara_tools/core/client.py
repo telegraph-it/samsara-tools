@@ -442,29 +442,29 @@ class SamsaraClient:
         
         all_trips = []
         params = {
-            'startTime': start_time.isoformat() + 'Z',
-            'endTime': end_time.isoformat() + 'Z',
+            'startMs': int(start_time.timestamp() * 1000),
+            'endMs': int(end_time.timestamp() * 1000),
+            'vehicleId': trailer_id
         }
         
-        url = f"{self.base_url}/fleet/trailers/{trailer_id}/trips"
+        url = f"{self.base_url}/v1/fleet/trips"
         
         try:
             while url:
                 def make_request():
-                    response = requests.get(url, headers=self.headers,
-                                          params=params if 'trips' in url else None)
+                    response = requests.get(url, headers=self.headers, params=params)
                     response.raise_for_status()
                     return response.json()
                 
                 data = self.rate_limiter.execute_with_retry(make_request)
-                trips = data.get('data', [])
+                trips = data.get('trips', [])
                 all_trips.extend(trips)
                 
                 # Check for pagination
                 pagination = data.get('pagination', {})
                 if pagination.get('hasNextPage', False):
                     cursor = pagination.get('endCursor', '')
-                    url = f"{self.base_url}/fleet/trailers/{trailer_id}/trips?after={cursor}"
+                    url = f"{self.base_url}/v1/fleet/trips?after={cursor}"
                 else:
                     url = None
                     
