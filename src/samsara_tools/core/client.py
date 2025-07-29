@@ -226,6 +226,56 @@ class SamsaraClient:
         logger.info(f"Fetched {len(all_tags)} tags from API")
         return all_tags
 
+    def get_all_addresses(self, use_cache: bool = True) -> List[Dict]:
+        """Fetch all addresses from the Samsara API.
+        
+        Args:
+            use_cache: Whether to use cached data if available
+            
+        Returns:
+            List of address dictionaries
+        """
+        cache_file = self.cache_manager.cache_dir / 'addresses.json'
+        
+        # Try cache first
+        if use_cache:
+            cached_data = self.cache_manager.load_cache(cache_file)
+            if cached_data:
+                logger.info("Using cached address data...")
+                return cached_data
+        
+        url = f"{self.base_url}/addresses"
+        all_addresses: List[Dict] = []
+        
+        try:
+            while url:
+                def make_request():
+                    response = requests.get(url, headers=self.headers)
+                    response.raise_for_status()
+                    return response.json()
+                
+                data = self.rate_limiter.execute_with_retry(make_request)
+                all_addresses.extend(data.get('data', []))
+                
+                # Handle pagination
+                pagination = data.get('pagination', {})
+                if pagination.get('hasNextPage', False):
+                    cursor = pagination.get('endCursor', '')
+                    url = f"{self.base_url}/addresses?after={cursor}"
+                else:
+                    url = None
+                    
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Error fetching addresses: {e}")
+            return []
+        
+        # Save results to cache
+        if use_cache and all_addresses:
+            self.cache_manager.save_cache(cache_file, all_addresses)
+        
+        logger.info(f"Fetched {len(all_addresses)} addresses from API")
+        return all_addresses
+
     def find_tag_by_name(self, tag_name: str) -> Optional[Dict]:
         """Find a tag by name."""
         tags = self.get_all_tags()

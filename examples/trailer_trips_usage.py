@@ -12,7 +12,7 @@ import os
 import sys
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
-from samsara_tools import SamsaraClient
+from samsara_tools import SamsaraClient, GeofenceResolver
 
 def select_trailer(trailers):
     """Allow user to select which trailer to analyze."""
@@ -54,36 +54,54 @@ def select_trailer(trailers):
             print("\nExiting...")
             sys.exit(0)
 
-def print_trip(trip, idx):
-    """Print formatted trip information."""
+
+def print_trip(trip, idx, resolver=None):
+    """Print formatted trip information with geofence name resolution."""
     trip_start_ms = trip.get('startMs', 0)
     trip_end_ms = trip.get('endMs', 0)
-    
-    # Handle potentially invalid timestamps
+
+    # Helper to safely convert timestamps
     def safe_timestamp_convert(timestamp_ms):
         if not timestamp_ms or timestamp_ms == 0:
             return 'Unknown'
         try:
-            # Check if timestamp is reasonable (between 1970 and 2100)
-            if timestamp_ms > 4102444800000 or timestamp_ms < 0:  # Year 2100 in ms
+            if timestamp_ms > 4102444800000 or timestamp_ms < 0:  # sanity (year 2100)
                 return f'Invalid timestamp: {timestamp_ms}'
             return datetime.fromtimestamp(timestamp_ms / 1000).strftime('%Y-%m-%d %H:%M:%S')
-        except (ValueError, OSError) as e:
+        except (ValueError, OSError):
             return f'Invalid timestamp: {timestamp_ms}'
-    
+
     trip_start = safe_timestamp_convert(trip_start_ms)
     trip_end = safe_timestamp_convert(trip_end_ms)
+
     distance_m = trip.get('distanceMeters', 0)
     distance_mi = distance_m / 1609.34 if distance_m else 0
-    start_location = trip.get('startLocation', 'Unknown')
-    end_location = trip.get('endLocation', 'Unknown')
-    
+
+    # Resolve start location
+    start_coords = trip.get('startCoordinates', {})
+    start_lat = start_coords.get('latitude')
+    start_lon = start_coords.get('longitude')
+    start_geofence_name = None
+    if resolver and start_lat is not None and start_lon is not None:
+        start_geofence_name = resolver.resolve(start_lat, start_lon)
+    start_location = start_geofence_name or trip.get('startLocation', 'Unknown')
+
+    # Resolve end location
+    end_coords = trip.get('endCoordinates', {})
+    end_lat = end_coords.get('latitude')
+    end_lon = end_coords.get('longitude')
+    end_geofence_name = None
+    if resolver and end_lat is not None and end_lon is not None:
+        end_geofence_name = resolver.resolve(end_lat, end_lon)
+    end_location = end_geofence_name or trip.get('endLocation', 'Unknown')
+
+    # Pretty print
     print(f"  {idx}. Trip from {start_location}")
     print(f"     Start: {trip_start}")
     print(f"     End: {trip_end}")
     print(f"     Distance: {distance_mi:.1f} miles")
     print(f"     End Location: {end_location}")
-    print()  # Add blank line for readability
+    print()  # readability
 
 def main():
     # Load environment variables
@@ -105,6 +123,10 @@ def main():
         print(f"API verification failed: {message}")
         return
     print("✓ API access verified")
+    
+    # Initialize geofence resolver for location name lookup
+    print("Initializing geofence resolver...")
+    resolver = GeofenceResolver(client)
     
     # Example 1: List all trailers
     print("\n1. Listing all trailers...")
@@ -138,7 +160,7 @@ def main():
         print(f"Found {len(trips)} trips:")
         # Show ALL trips instead of just first 3
         for i, trip in enumerate(trips, 1):
-            print_trip(trip, i)
+            print_trip(trip, i, resolver)
         
         # Example 3: Trip details already available in response
         if trips:
