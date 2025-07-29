@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 from ..core.geofence_query import SamsaraGeofenceQuery
 from ..core.client import SamsaraClient
 from ..core.route_service import RouteService
+from ..core.trip_service import TripService
 from datetime import datetime, timedelta
 
 
@@ -193,6 +194,163 @@ def cmd_routes_get(args):
         sys.exit(1)
 
 
+def cmd_trips_query(args):
+    """Query trips within a time range (optionally geofence filtered)."""
+    api_token = setup_environment()
+    service = TripService(api_token)
+
+    try:
+        # Parse datetime inputs
+        start_time = datetime.fromisoformat(args.start)
+        end_time = datetime.fromisoformat(args.end) if args.end else datetime.now()
+
+        print(f"Querying trips for asset {args.asset} from {start_time} to {end_time}")
+        if args.geofence:
+            print(f"Filtering by geofence name: '{args.geofence}' "
+                  f"(match_start={args.match_start}, match_end={args.match_end})")
+        print("=" * 50)
+
+        # Determine match flags: default to True for both if neither flag provided
+        match_start = args.match_start or (not args.match_start and not args.match_end)
+        match_end = args.match_end or (not args.match_start and not args.match_end)
+
+        trips = service.query_trips(
+            asset_id=args.asset,
+            start_time=start_time,
+            end_time=end_time,
+            geofence=args.geofence,
+            include_path=args.include_points,
+            match_start=match_start,
+            match_end=match_end,
+            use_cache=not args.no_cache,
+        )
+
+        if trips:
+            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+            
+            # Set output path and auto-append timestamp
+            if args.output:
+                output_path = Path(args.output)
+                # Insert timestamp before file extension
+                stem = output_path.stem
+                suffix = output_path.suffix
+                timestamped_name = f"{stem}_{timestamp}{suffix}"
+                output_file = output_path.parent / timestamped_name
+            else:
+                # Create default output path in data/output/trips_query
+                output_dir = Path('data/output/trips_query')
+                output_file = output_dir / f'trips_{args.asset}_{timestamp}.{args.format}'
+            
+            saved = service.save_trips(trips, format=args.format, output_file=output_file)
+            print(f"\nTrips saved to: {saved}")
+            
+            # Also print summary to console
+            service.print_trips_summary(trips)
+        else:
+            print("\nNo trips found with the specified criteria")
+
+    except Exception as e:
+        print(f"Error: {e}")
+        sys.exit(1)
+
+
+def cmd_trips_get(args):
+    """Get details for a specific trip (limited by API availability)."""
+    api_token = setup_environment()
+    service = TripService(api_token)
+
+    try:
+        print(f"Fetching trip {args.trip_id}...")
+        trip = service.get_trip_by_id(args.trip_id, include_path=args.include_points)
+
+        if trip:
+            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+            
+            # Set output path and auto-append timestamp
+            if args.output:
+                output_path = Path(args.output)
+                # Insert timestamp before file extension
+                stem = output_path.stem
+                suffix = output_path.suffix
+                timestamped_name = f"{stem}_{timestamp}{suffix}"
+                output_file = output_path.parent / timestamped_name
+            else:
+                # Create default output path in data/output/trips_query
+                output_dir = Path('data/output/trips_query')
+                output_file = output_dir / f'trip_{args.trip_id}_{timestamp}.{args.format}'
+            
+            saved = service.save_trips([trip], format=args.format, output_file=output_file)
+            print(f"\nTrip saved to: {saved}")
+            
+            # Also print summary to console
+            service.print_trips_summary([trip])
+        else:
+            print("\nTrip fetch not supported by current Samsara API (try using 'trips query').")
+
+    except Exception as e:
+        print(f"Error: {e}")
+        sys.exit(1)
+
+
+def cmd_trips_query_by_geofence(args):
+    """Query trips across all assets that start/end in a specific geofence."""
+    api_token = setup_environment()
+    service = TripService(api_token)
+
+    try:
+        # Parse dates
+        start_time = datetime.fromisoformat(args.start)
+        end_time = datetime.fromisoformat(args.end) if args.end else datetime.now()
+
+        print(f"Querying all assets for trips in geofence '{args.geofence}' "
+              f"from {start_time} to {end_time}")
+        print(f"Match start: {args.match_start} | Match end: {args.match_end}")
+        print("=" * 50)
+
+        # Determine default matching logic (both true if neither specified)
+        match_start = args.match_start or (not args.match_start and not args.match_end)
+        match_end = args.match_end or (not args.match_start and not args.match_end)
+
+        results = service.query_trips_by_geofence(
+            geofence_name=args.geofence,
+            start_time=start_time,
+            end_time=end_time,
+            match_start=match_start,
+            match_end=match_end,
+            include_path=args.include_points,
+            use_cache=not args.no_cache,
+        )
+
+        if results:
+            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+            
+            # Set output path and auto-append timestamp
+            if args.output:
+                output_path = Path(args.output)
+                # Insert timestamp before file extension
+                stem = output_path.stem
+                suffix = output_path.suffix
+                timestamped_name = f"{stem}_{timestamp}{suffix}"
+                output_file = output_path.parent / timestamped_name
+            else:
+                # Create default output path in data/output/trips_query
+                output_dir = Path('data/output/trips_query')
+                geofence_safe = args.geofence.replace(' ', '_').replace('/', '_')
+                output_file = output_dir / f'geofence_trips_{geofence_safe}_{timestamp}.{args.format}'
+            
+            saved = service.save_geofence_trips(results, format=args.format, output_file=output_file)
+            print(f"\nResults saved to: {saved}")
+            
+            # Also print summary to console
+            service.print_geofence_trips_summary(results, args.geofence)
+        else:
+            print("\nNo trips found for the specified geofence and date range")
+
+    except Exception as e:
+        print(f"Error: {e}")
+        sys.exit(1)
+
+
 def main():
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
@@ -257,11 +415,73 @@ def main():
     routes_get.add_argument('--output', help='Output file path')
     routes_get.set_defaults(func=cmd_routes_get)
     
+    # Trips subcommand
+    trips_parser = subparsers.add_parser('trips', help='Trip data operations')
+    trips_subparsers = trips_parser.add_subparsers(dest='trips_command', help='Trip commands')
+
+    # Trips query command
+    trips_query = trips_subparsers.add_parser('query', help='Query trips by time range and filters')
+    trips_query.add_argument('--asset', '--trailer', dest='asset', required=True,
+                             help='Asset/Trailer ID to query')
+    trips_query.add_argument('--start', required=True,
+                             help='Start date/time (ISO format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS)')
+    trips_query.add_argument('--end',
+                             help='End date/time (ISO format). Defaults to now if not specified')
+    trips_query.add_argument('--geofence', help='Filter by geofence name')
+    trips_query.add_argument('--match-start', action='store_true',
+                             help='Only match trips that START in the geofence')
+    trips_query.add_argument('--match-end', action='store_true',
+                             help='Only match trips that END in the geofence')
+    trips_query.add_argument('--include-points', action='store_true',
+                             help='Include GPS track points (increases query time)')
+    trips_query.add_argument('--format', choices=['json', 'csv', 'gpx'], default='json',
+                             help='Output format (default: json)')
+    trips_query.add_argument('--output', help='Output file path')
+    trips_query.add_argument('--no-cache', action='store_true',
+                             help='Skip cache and fetch fresh data')
+    trips_query.set_defaults(func=cmd_trips_query)
+
+    # Trips get command
+    trips_get = trips_subparsers.add_parser('get', help='Get a specific trip by ID')
+    trips_get.add_argument('trip_id', help='Trip ID to fetch')
+    trips_get.add_argument('--include-points', action='store_true',
+                           help='Include GPS track points')
+    trips_get.add_argument('--format', choices=['json', 'csv', 'gpx'], default='json',
+                           help='Output format (default: json)')
+    trips_get.add_argument('--output', help='Output file path')
+    trips_get.set_defaults(func=cmd_trips_get)
+
+    # Trips query-by-geofence command
+    trips_qbg = trips_subparsers.add_parser('query-by-geofence',
+                                            help='Query all assets for trips that start/end in a given geofence')
+    trips_qbg.add_argument('geofence', help='Geofence name to search for')
+    trips_qbg.add_argument('--start', required=True,
+                           help='Start date/time (ISO format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS)')
+    trips_qbg.add_argument('--end',
+                           help='End date/time (ISO format). Defaults to now if not specified')
+    trips_qbg.add_argument('--match-start', action='store_true',
+                           help='Only match trips that START in the geofence')
+    trips_qbg.add_argument('--match-end', action='store_true',
+                           help='Only match trips that END in the geofence')
+    trips_qbg.add_argument('--include-points', action='store_true',
+                           help='Include GPS track points (increases query time)')
+    trips_qbg.add_argument('--format', choices=['json', 'csv'], default='json',
+                           help='Output format (default: json)')
+    trips_qbg.add_argument('--output', help='Output file path')
+    trips_qbg.add_argument('--no-cache', action='store_true',
+                           help='Skip cache and fetch fresh data')
+    trips_qbg.set_defaults(func=cmd_trips_query_by_geofence)
+
     # Parse arguments
     args = parser.parse_args()
     
     if not args.command:
         parser.print_help()
+        sys.exit(1)
+    
+    # Handle trips subcommands
+    if args.command == 'trips' and not getattr(args, 'trips_command', None):
+        trips_parser.print_help()
         sys.exit(1)
     
     # Handle routes subcommands
