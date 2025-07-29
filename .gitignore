@@ -34,6 +34,9 @@ env/
 data/cache/
 data/output/
 
+# Documentation (local development only)
+docs/
+
 # IDE
 .vscode/
 .idea/
