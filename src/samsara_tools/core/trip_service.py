@@ -10,6 +10,7 @@ from typing import List, Optional, Dict, Any
 from ..models.trip import Trip, TripPoint, TripStop
 from .client import SamsaraClient
 from .geofence_resolver import GeofenceResolver
+from .geofence_query import SamsaraGeofenceQuery
 
 logger = logging.getLogger(__name__)
 
@@ -303,6 +304,72 @@ class TripService:
         self.logger.info(f"Filtered {len(filtered_trips)} trips matching geofence '{geofence_name}'")
         return filtered_trips
     
+    def filter_trips_by_start_end_geofences(
+        self,
+        trips: List[Trip],
+        start_geofences: List[str],
+        end_geofences: List[str],
+        case_insensitive: bool = True
+    ) -> List[Trip]:
+        """
+        Filter trips that BEGIN in any geofence from ``start_geofences`` and
+        END in any geofence from ``end_geofences``.
+
+        Args:
+            trips: Trips to evaluate.
+            start_geofences: List of acceptable start geofence names.
+            end_geofences: List of acceptable end geofence names.
+            case_insensitive: Normalise names before comparison (default True).
+
+        Returns:
+            List[Trip]: Trips whose start AND end geofences satisfy the lists.
+        """
+        if not start_geofences or not end_geofences:
+            self.logger.warning(
+                "Start or end geofence list empty – returning empty result"
+            )
+            return []
+
+        # Pre-compute normalised name sets for fast lookup
+        if case_insensitive:
+            start_set = {self._normalize(n) for n in start_geofences}
+            end_set = {self._normalize(n) for n in end_geofences}
+        else:
+            start_set = set(start_geofences)
+            end_set = set(end_geofences)
+
+        matched: List[Trip] = []
+
+        for trip in trips:
+            # Extract start / end names from enter_geofences
+            start_name = None
+            end_name = None
+            for entry in trip.enter_geofences:
+                if entry.startswith("start:"):
+                    start_name = entry[6:]
+                elif entry.startswith("end:"):
+                    end_name = entry[4:]
+
+            if not start_name or not end_name:
+                # Skip trips where either name is unavailable
+                continue
+
+            if case_insensitive:
+                start_name_norm = self._normalize(start_name)
+                end_name_norm = self._normalize(end_name)
+            else:
+                start_name_norm = start_name
+                end_name_norm = end_name
+
+            if start_name_norm in start_set and end_name_norm in end_set:
+                matched.append(trip)
+
+        self.logger.info(
+            f"Filtered {len(matched)} trips matching start/end geofence lists "
+            f"({len(start_set)} start names, {len(end_set)} end names)"
+        )
+        return matched
+    
     def query_trips(self, asset_id: str, start_time: datetime, end_time: datetime,
                    geofence: Optional[str] = None, include_path: bool = False,
                    match_start: bool = True, match_end: bool = True,
@@ -449,6 +516,97 @@ class TripService:
                 continue
         
         self.logger.info(f"Found {total_trips} total trips across {len(results)} assets")
+        return results
+    
+    def query_trips_by_geofence_tags(self, start_tag: str, end_tag: str,
+                                   start_time: datetime, end_time: datetime,
+                                   include_path: bool = False, use_cache: bool = True,
+                                   asset_types: Optional[List[str]] = None) -> Dict[str, List[Trip]]:
+        """Query trips for all assets that start in geofences with start_tag and end in geofences with end_tag.
+        
+        Args:
+            start_tag: Tag name for start geofences (e.g., 'Maas' for dairies)
+            end_tag: Tag name for end geofences (e.g., 'Maas Injection' for injection sites)
+            start_time: Start of time range
+            end_time: End of time range
+            include_path: Whether to include GPS path data
+            use_cache: Whether to use cached data
+            asset_types: Optional list of asset types to filter (e.g., ['trailer'])
+            
+        Returns:
+            Dictionary mapping asset IDs to their matching trips
+        """
+        self.logger.info(f"Querying trips from '{start_tag}' to '{end_tag}' geofences")
+        
+        # Initialize geofence query client
+        geofence_client = SamsaraGeofenceQuery(self.client.api_token)
+        
+        # Fetch geofences for both tags
+        self.logger.info(f"Fetching geofences with start tag: '{start_tag}'")
+        start_geofences = geofence_client.query_geofences_by_tag(start_tag)
+        start_names = [gf['name'] for gf in start_geofences if gf.get('name')]
+        
+        self.logger.info(f"Fetching geofences with end tag: '{end_tag}'")
+        end_geofences = geofence_client.query_geofences_by_tag(end_tag)
+        end_names = [gf['name'] for gf in end_geofences if gf.get('name')]
+        
+        if not start_names:
+            self.logger.warning(f"No geofences found with start tag '{start_tag}'")
+            return {}
+        
+        if not end_names:
+            self.logger.warning(f"No geofences found with end tag '{end_tag}'")
+            return {}
+        
+        self.logger.info(f"Found {len(start_names)} start geofences and {len(end_names)} end geofences")
+        
+        # Get all assets
+        all_assets = []
+        
+        # Get trailers
+        if not asset_types or 'trailer' in asset_types:
+            trailers = self.client.get_all_trailers()
+            for trailer in trailers:
+                all_assets.append({
+                    'id': trailer['id'],
+                    'name': trailer.get('name', 'Unnamed'),
+                    'type': 'trailer'
+                })
+        
+        self.logger.info(f"Found {len(all_assets)} assets to check")
+        
+        # Query trips for each asset
+        results = {}
+        total_trips = 0
+        
+        for i, asset in enumerate(all_assets):
+            asset_id = asset['id']
+            asset_name = asset['name']
+            
+            if (i + 1) % 10 == 0:
+                self.logger.info(f"Processing asset {i + 1}/{len(all_assets)}...")
+            
+            try:
+                # Get trips for this asset
+                trips = self.get_trips(asset_id, start_time, end_time,
+                                     include_path=include_path, use_cache=use_cache)
+                
+                # Filter by start/end geofence tags
+                if trips:
+                    filtered_trips = self.filter_trips_by_start_end_geofences(
+                        trips, start_names, end_names
+                    )
+                    
+                    if filtered_trips:
+                        results[asset_id] = filtered_trips
+                        total_trips += len(filtered_trips)
+                        self.logger.debug(f"Asset {asset_name} has {len(filtered_trips)} matching trips")
+                        
+            except Exception as e:
+                self.logger.warning(f"Failed to query trips for asset {asset_id}: {e}")
+                continue
+        
+        self.logger.info(f"Found {total_trips} dairy-to-injection trips across {len(results)} assets")
         return results
     
     def print_geofence_trips_summary(self, results: Dict[str, List[Trip]], geofence_name: str):

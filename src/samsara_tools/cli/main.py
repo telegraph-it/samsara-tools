@@ -351,6 +351,65 @@ def cmd_trips_query_by_geofence(args):
         sys.exit(1)
 
 
+def cmd_trips_query_dairy_to_injection(args):
+    """Query trips that start at dairies and end at injection sites.
+
+    The geofence sets are determined by tag names (defaults: 'Maas'
+    for dairies and 'Maas Injection' for injection sites).
+    """
+    api_token = setup_environment()
+    service = TripService(api_token)
+
+    try:
+        # Parse dates
+        start_time = datetime.fromisoformat(args.start)
+        end_time = datetime.fromisoformat(args.end) if args.end else datetime.now()
+
+        start_tag = args.start_tag
+        end_tag = args.end_tag
+
+        print(f"Querying all assets for trips that start in geofences tagged "
+              f"'{start_tag}' and end in geofences tagged '{end_tag}'\n"
+              f"From {start_time} to {end_time}")
+        print("=" * 50)
+
+        results = service.query_trips_by_geofence_tags(
+            start_tag=start_tag,
+            end_tag=end_tag,
+            start_time=start_time,
+            end_time=end_time,
+            include_path=args.include_points,
+            use_cache=not args.no_cache,
+        )
+
+        if results:
+            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+
+            # Determine output path and inject timestamp
+            if args.output:
+                output_path = Path(args.output)
+                stem, suffix = output_path.stem, output_path.suffix
+                output_file = output_path.parent / f"{stem}_{timestamp}{suffix}"
+            else:
+                # Default path inside data/output/trips_query
+                output_dir = Path('data/output/trips_query')
+                safe_start = start_tag.replace(' ', '_')
+                safe_end = end_tag.replace(' ', '_')
+                output_file = output_dir / f"dairy_to_injection_{safe_start}_to_{safe_end}_{timestamp}.{args.format}"
+
+            saved_path = service.save_geofence_trips(results, format=args.format, output_file=output_file)
+            print(f"\nResults saved to: {saved_path}")
+
+            # Console summary
+            service.print_geofence_trips_summary(results, f"{start_tag} ➜ {end_tag}")
+        else:
+            print("\nNo trips found for the specified tag pair and date range.")
+
+    except Exception as e:
+        print(f"Error: {e}")
+        sys.exit(1)
+
+
 def main():
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
@@ -471,6 +530,28 @@ def main():
     trips_qbg.add_argument('--no-cache', action='store_true',
                            help='Skip cache and fetch fresh data')
     trips_qbg.set_defaults(func=cmd_trips_query_by_geofence)
+
+    # Trips query dairy-to-injection command
+    trips_qdti = trips_subparsers.add_parser(
+        'query-dairy-to-injection',
+        help='Query all assets for trips that start in dairies (start_tag) and end in injection sites (end_tag)'
+    )
+    trips_qdti.add_argument('--start-tag', default='Maas',
+                            help="Tag name for dairy geofences (default: 'Maas')")
+    trips_qdti.add_argument('--end-tag', default='Maas Injection',
+                            help="Tag name for injection site geofences (default: 'Maas Injection')")
+    trips_qdti.add_argument('--start', required=True,
+                            help='Start date/time (ISO format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS)')
+    trips_qdti.add_argument('--end',
+                            help='End date/time (ISO format). Defaults to now if not specified')
+    trips_qdti.add_argument('--include-points', action='store_true',
+                            help='Include GPS track points (increases query time)')
+    trips_qdti.add_argument('--format', choices=['json', 'csv'], default='json',
+                            help='Output format (default: json)')
+    trips_qdti.add_argument('--output', help='Output file path')
+    trips_qdti.add_argument('--no-cache', action='store_true',
+                            help='Skip cache and fetch fresh data')
+    trips_qdti.set_defaults(func=cmd_trips_query_dairy_to_injection)
 
     # Parse arguments
     args = parser.parse_args()
