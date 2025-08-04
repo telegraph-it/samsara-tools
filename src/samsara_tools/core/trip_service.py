@@ -309,24 +309,35 @@ class TripService:
         trips: List[Trip],
         start_geofences: List[str],
         end_geofences: List[str],
-        case_insensitive: bool = True
+        case_insensitive: bool = True,
+        allow_no_start_geofence: bool = False
     ) -> List[Trip]:
         """
         Filter trips that BEGIN in any geofence from ``start_geofences`` and
-        END in any geofence from ``end_geofences``.
+        END in any geofence from ``end_geofences``, OR have no start geofence
+        and END in any geofence from ``end_geofences`` (if allow_no_start_geofence).
 
         Args:
             trips: Trips to evaluate.
             start_geofences: List of acceptable start geofence names.
             end_geofences: List of acceptable end geofence names.
             case_insensitive: Normalise names before comparison (default True).
+            allow_no_start_geofence: If True, include trips with no start geofence
+                                    that end in an acceptable geofence.
 
         Returns:
-            List[Trip]: Trips whose start AND end geofences satisfy the lists.
+            List[Trip]: Trips whose start AND end geofences satisfy the lists,
+                       or trips with no start that end in the list (if allowed).
         """
-        if not start_geofences or not end_geofences:
+        if not end_geofences:
             self.logger.warning(
-                "Start or end geofence list empty – returning empty result"
+                "End geofence list empty – returning empty result"
+            )
+            return []
+        
+        if not start_geofences and not allow_no_start_geofence:
+            self.logger.warning(
+                "Start geofence list empty and no-start not allowed – returning empty result"
             )
             return []
 
@@ -350,18 +361,31 @@ class TripService:
                 elif entry.startswith("end:"):
                     end_name = entry[4:]
 
-            if not start_name or not end_name:
-                # Skip trips where either name is unavailable
+            # Must have an end geofence
+            if not end_name:
                 continue
-
+            
+            # Check end geofence matches
             if case_insensitive:
-                start_name_norm = self._normalize(start_name)
                 end_name_norm = self._normalize(end_name)
             else:
-                start_name_norm = start_name
                 end_name_norm = end_name
-
-            if start_name_norm in start_set and end_name_norm in end_set:
+            
+            if end_name_norm not in end_set:
+                continue
+            
+            # Check start geofence conditions
+            if start_name:
+                # Trip has a start geofence - check if it's in our list
+                if case_insensitive:
+                    start_name_norm = self._normalize(start_name)
+                else:
+                    start_name_norm = start_name
+                
+                if start_name_norm in start_set:
+                    matched.append(trip)
+            elif allow_no_start_geofence:
+                # Trip has no start geofence, but we allow this
                 matched.append(trip)
 
         self.logger.info(
@@ -521,7 +545,8 @@ class TripService:
     def query_trips_by_geofence_tags(self, start_tag: str, end_tag: str,
                                    start_time: datetime, end_time: datetime,
                                    include_path: bool = False, use_cache: bool = True,
-                                   asset_types: Optional[List[str]] = None) -> Dict[str, List[Trip]]:
+                                   asset_types: Optional[List[str]] = None,
+                                   allow_no_start_geofence: bool = False) -> Dict[str, List[Trip]]:
         """Query trips for all assets that start in geofences with start_tag and end in geofences with end_tag.
         
         Args:
@@ -532,6 +557,8 @@ class TripService:
             include_path: Whether to include GPS path data
             use_cache: Whether to use cached data
             asset_types: Optional list of asset types to filter (e.g., ['trailer'])
+            allow_no_start_geofence: If True, include trips with no start geofence
+                                    that end in an end_tag geofence
             
         Returns:
             Dictionary mapping asset IDs to their matching trips
@@ -594,7 +621,8 @@ class TripService:
                 # Filter by start/end geofence tags
                 if trips:
                     filtered_trips = self.filter_trips_by_start_end_geofences(
-                        trips, start_names, end_names
+                        trips, start_names, end_names,
+                        allow_no_start_geofence=allow_no_start_geofence
                     )
                     
                     if filtered_trips:
@@ -606,7 +634,10 @@ class TripService:
                 self.logger.warning(f"Failed to query trips for asset {asset_id}: {e}")
                 continue
         
-        self.logger.info(f"Found {total_trips} dairy-to-injection trips across {len(results)} assets")
+        if allow_no_start_geofence:
+            self.logger.info(f"Found {total_trips} trips (including no-start trips) across {len(results)} assets")
+        else:
+            self.logger.info(f"Found {total_trips} trips across {len(results)} assets")
         return results
     
     def print_geofence_trips_summary(self, results: Dict[str, List[Trip]], geofence_name: str):

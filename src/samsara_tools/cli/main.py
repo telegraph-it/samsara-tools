@@ -380,6 +380,7 @@ def cmd_trips_query_dairy_to_injection(args):
             end_time=end_time,
             include_path=args.include_points,
             use_cache=not args.no_cache,
+            allow_no_start_geofence=args.allow_no_start_geofence,
         )
 
         if results:
@@ -551,6 +552,15 @@ def main():
     trips_qdti.add_argument('--output', help='Output file path')
     trips_qdti.add_argument('--no-cache', action='store_true',
                             help='Skip cache and fetch fresh data')
+    trips_qdti.add_argument('--allow-no-start-geofence',
+                            dest='allow_no_start_geofence',
+                            action='store_true',
+                            default=True,
+                            help='Include trips with no start geofence that end at injection sites (default: True)')
+    trips_qdti.add_argument('--no-allow-no-start-geofence',
+                            dest='allow_no_start_geofence',
+                            action='store_false',
+                            help='Exclude trips with no start geofence')
     trips_qdti.set_defaults(func=cmd_trips_query_dairy_to_injection)
 
     # Parse arguments

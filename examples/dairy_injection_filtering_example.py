@@ -61,9 +61,10 @@ def main():
         "Maas-Helm Injection Site"
     ]
 
-    print("\nFiltering for dairy-to-injection trips...")
+    print("\nFiltering for dairy-to-injection trips (including trips with no start geofence)...")
     filtered_trips = service.filter_trips_by_start_end_geofences(
-        trips, dairy_names, injection_names
+        trips, dairy_names, injection_names,
+        allow_no_start_geofence=True  # Allow trips that start at intermediary stops
     )
 
     print(f"Found {len(filtered_trips)} dairy-to-injection trips:")
@@ -102,8 +103,11 @@ def main():
     print("\n\nExample 3: Equivalent CLI commands")
     print("-" * 50)
     
-    print("\n# Query all assets for dairy-to-injection trips:")
+    print("\n# Query all assets for dairy-to-injection trips (includes no-start trips by default):")
     print("samsara-tools trips query-dairy-to-injection --start 2025-07-01 --end 2025-07-31")
+    
+    print("\n# Exclude trips with no start geofence (strict dairy-to-injection only):")
+    print("samsara-tools trips query-dairy-to-injection --start 2025-07-01 --end 2025-07-31 --no-allow-no-start-geofence")
     
     print("\n# With custom tags:")
     print("samsara-tools trips query-dairy-to-injection --start-tag 'Maas' --end-tag 'Maas Injection' --start 2025-07-01")

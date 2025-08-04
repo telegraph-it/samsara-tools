@@ -59,9 +59,10 @@ def main():
     print(f"Found {len(start_names)} dairy geofences and {len(end_names)} injection site geofences")
 
     # Filter trips
-    print("\nFiltering for dairy-to-injection pattern...")
+    print("\nFiltering for dairy-to-injection pattern (including trips with no start geofence)...")
     filtered_trips = service.filter_trips_by_start_end_geofences(
-        trips, start_names, end_names
+        trips, start_names, end_names,
+        allow_no_start_geofence=True  # Allow trips that start at intermediary stops
     )
 
     if filtered_trips:

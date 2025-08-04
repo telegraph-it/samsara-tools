@@ -1,0 +1,276 @@
+[
+  {
+    "id": "trip_1751484121468_35753278_-119418770",
+    "trailer_id": "281474992485382",
+    "name": null,
+    "start_time": "2025-07-02 14:22:01.468000",
+    "end_time": "2025-07-02 16:20:38.573000",
+    "start_location": {
+      "lat": 35.753278366,
+      "lng": -119.418770729
+    },
+    "end_location": {
+      "lat": 36.501944657,
+      "lng": -120.110380894
+    },
+    "distance_meters": 145216,
+    "duration_seconds": 7117,
+    "stops": [],
+    "points": [],
+    "enter_geofences": [
+      "start:Maas-JDS Dairy [MAA-MER-24]",
+      "end:Maas-Helm Injection Site"
+    ]
+  },
+  {
+    "id": "trip_1751666624918_36501935_-120110275",
+    "trailer_id": "281474992485382",
+    "name": null,
+    "start_time": "2025-07-04 17:03:44.918000",
+    "end_time": "2025-07-04 18:18:25.982000",
+    "start_location": {
+      "lat": 36.501935613,
+      "lng": -120.11027529
+    },
+    "end_location": {
+      "lat": 36.162398938,
+      "lng": -119.334999252
+    },
+    "distance_meters": 100816,
+    "duration_seconds": 4481,
+    "stops": [],
+    "points": [],
+    "enter_geofences": [
+      "start:Maas-Helm Injection Site",
+      "end:Maas-Diesel Doctor [Laydown Yard]"
+    ]
+  },
+  {
+    "id": "trip_1751701072937_36162367_-119334851",
+    "trailer_id": "281474992485382",
+    "name": null,
+    "start_time": "2025-07-05 02:37:52.937000",
+    "end_time": "2025-07-05 02:45:17.375000",
+    "start_location": {
+      "lat": 36.162367085,
+      "lng": -119.334851351
+    },
+    "end_location": {
+      "lat": 36.180714446,
+      "lng": -119.329948568
+    },
+    "distance_meters": 3294,
+    "duration_seconds": 444,
+    "stops": [],
+    "points": [],
+    "enter_geofences": [
+      "start:Maas-Diesel Doctor [Laydown Yard]"
+    ]
+  },
+  {
+    "id": "trip_1751702081710_36180599_-119329802",
+    "trailer_id": "281474992485382",
+    "name": null,
+    "start_time": "2025-07-05 02:54:41.710000",
+    "end_time": "2025-07-05 03:32:13.555000",
+    "start_location": {
+      "lat": 36.180599824,
+      "lng": -119.329802838
+    },
+    "end_location": {
+      "lat": 36.032600726,
+      "lng": -119.5109652
+    },
+    "distance_meters": 42581,
+    "duration_seconds": 2251,
+    "stops": [],
+    "points": [],
+    "enter_geofences": [
+      "end:Maas-Channel Island Dairy [MAA-PAC-20]"
+    ]
+  },
+  {
+    "id": "trip_1751705103509_36032539_-119510661",
+    "trailer_id": "281474992485382",
+    "name": null,
+    "start_time": "2025-07-05 03:45:03.509000",
+    "end_time": "2025-07-05 04:22:28.299000",
+    "start_location": {
+      "lat": 36.032539057,
+      "lng": -119.510661165
+    },
+    "end_location": {
+      "lat": 35.753384219,
+      "lng": -119.41873978
+    },
+    "distance_meters": 44287,
+    "duration_seconds": 2244,
+    "stops": [],
+    "points": [],
+    "enter_geofences": [
+      "start:Maas-Channel Island Dairy [MAA-PAC-20]",
+      "end:Maas-JDS Dairy [MAA-MER-24]"
+    ]
+  },
+  {
+    "id": "trip_1752132062434_35754431_-119419041",
+    "trailer_id": "281474992485382",
+    "name": null,
+    "start_time": "2025-07-10 02:21:02.434000",
+    "end_time": "2025-07-10 04:09:00.410000",
+    "start_location": {
+      "lat": 35.754431745,
+      "lng": -119.41904191
+    },
+    "end_location": {
+      "lat": 36.502015464,
+      "lng": -120.110308069
+    },
+    "distance_meters": 141350,
+    "duration_seconds": 6477,
+    "stops": [],
+    "points": [],
+    "enter_geofences": [
+      "start:Maas-JDS Dairy [MAA-MER-24]",
+      "end:Maas-Helm Injection Site"
+    ]
+  },
+  {
+    "id": "trip_1752192784716_36502113_-120110100",
+    "trailer_id": "281474992485382",
+    "name": null,
+    "start_time": "2025-07-10 19:13:04.716000",
+    "end_time": "2025-07-10 20:29:25.320000",
+    "start_location": {
+      "lat": 36.502113185,
+      "lng": -120.110100898
+    },
+    "end_location": {
+      "lat": 36.162395856,
+      "lng": -119.335005713
+    },
+    "distance_meters": 100832,
+    "duration_seconds": 4580,
+    "stops": [],
+    "points": [],
+    "enter_geofences": [
+      "start:Maas-Helm Injection Site",
+      "end:Maas-Diesel Doctor [Laydown Yard]"
+    ]
+  },
+  {
+    "id": "trip_1752770404602_36161063_-119335352",
+    "trailer_id": "281474992485382",
+    "name": null,
+    "start_time": "2025-07-17 11:40:04.602000",
+    "end_time": "2025-07-17 12:34:10.221000",
+    "start_location": {
+      "lat": 36.161063671,
+      "lng": -119.335352339
+    },
+    "end_location": {
+      "lat": 35.753514506,
+      "lng": -119.41881248
+    },
+    "distance_meters": 62665,
+    "duration_seconds": 3245,
+    "stops": [],
+    "points": [],
+    "enter_geofences": [
+      "start:Maas-Diesel Doctor [Laydown Yard]",
+      "end:Maas-JDS Dairy [MAA-MER-24]"
+    ]
+  },
+  {
+    "id": "trip_1753281086718_35753637_-119418568",
+    "trailer_id": "281474992485382",
+    "name": null,
+    "start_time": "2025-07-23 09:31:26.718000",
+    "end_time": "2025-07-23 10:27:01.465000",
+    "start_location": {
+      "lat": 35.753637085,
+      "lng": -119.418568265
+    },
+    "end_location": {
+      "lat": 36.162589486,
+      "lng": -119.335063413
+    },
+    "distance_meters": 73688,
+    "duration_seconds": 3334,
+    "stops": [],
+    "points": [],
+    "enter_geofences": [
+      "start:Maas-JDS Dairy [MAA-MER-24]",
+      "end:Maas-Diesel Doctor [Laydown Yard]"
+    ]
+  },
+  {
+    "id": "trip_1753302372399_36162055_-119334991",
+    "trailer_id": "281474992485382",
+    "name": null,
+    "start_time": "2025-07-23 15:26:12.399000",
+    "end_time": "2025-07-23 16:53:54.410000",
+    "start_location": {
+      "lat": 36.162055687,
+      "lng": -119.334991603
+    },
+    "end_location": {
+      "lat": 36.501900252,
+      "lng": -120.110406133
+    },
+    "distance_meters": 102450,
+    "duration_seconds": 5262,
+    "stops": [],
+    "points": [],
+    "enter_geofences": [
+      "start:Maas-Diesel Doctor [Laydown Yard]",
+      "end:Maas-Helm Injection Site"
+    ]
+  },
+  {
+    "id": "trip_1753816972732_36501985_-120110358",
+    "trailer_id": "281474992485382",
+    "name": null,
+    "start_time": "2025-07-29 14:22:52.732000",
+    "end_time": "2025-07-29 14:35:10.935000",
+    "start_location": {
+      "lat": 36.501985079,
+      "lng": -120.110358545
+    },
+    "end_location": {
+      "lat": 36.477948289,
+      "lng": -120.011855945
+    },
+    "distance_meters": 11378,
+    "duration_seconds": 738,
+    "stops": [],
+    "points": [],
+    "enter_geofences": [
+      "start:Maas-Helm Injection Site",
+      "end:Maas-Five Points Injection Site"
+    ]
+  },
+  {
+    "id": "trip_1753862000467_36478169_-120011794",
+    "trailer_id": "281474992485382",
+    "name": null,
+    "start_time": "2025-07-30 02:53:20.467000",
+    "end_time": "2025-07-30 04:34:13.533000",
+    "start_location": {
+      "lat": 36.478169654,
+      "lng": -120.011794539
+    },
+    "end_location": {
+      "lat": 35.753882519,
+      "lng": -119.418712378
+    },
+    "distance_meters": 140172,
+    "duration_seconds": 6053,
+    "stops": [],
+    "points": [],
+    "enter_geofences": [
+      "start:Maas-Five Points Injection Site",
+      "end:Maas-JDS Dairy [MAA-MER-24]"
+    ]
+  }
+]
