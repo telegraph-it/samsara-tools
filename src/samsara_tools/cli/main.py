@@ -363,7 +363,15 @@ def cmd_trips_query_dairy_to_injection(args):
     try:
         # Parse dates
         start_time = datetime.fromisoformat(args.start)
-        end_time = datetime.fromisoformat(args.end) if args.end else datetime.now()
+        
+        # Parse end time and adjust to end of day if only date provided
+        if args.end:
+            end_time = datetime.fromisoformat(args.end)
+            # If time is midnight (00:00:00), set to end of day (23:59:59)
+            if end_time.time() == datetime.min.time():
+                end_time = end_time.replace(hour=23, minute=59, second=59)
+        else:
+            end_time = datetime.now()
 
         start_tag = args.start_tag
         end_tag = args.end_tag

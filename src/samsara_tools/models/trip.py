@@ -45,6 +45,8 @@ class Trip(BaseModel):
     end_time: Optional[datetime] = None
     start_location: Optional[Dict[str, float]] = None  # {"lat": 0.0, "lng": 0.0}
     end_location: Optional[Dict[str, float]] = None
+    start_address: Optional[str] = None  # Street address from Samsara API
+    end_address: Optional[str] = None    # Street address from Samsara API
     distance_meters: Optional[int] = None
     duration_seconds: Optional[int] = None
     stops: List[TripStop] = Field(default_factory=list)
@@ -115,6 +117,8 @@ class Trip(BaseModel):
             "start_lng": self.start_location.get("lng") if self.start_location else None,
             "end_lat": self.end_location.get("lat") if self.end_location else None,
             "end_lng": self.end_location.get("lng") if self.end_location else None,
+            "start_address": self.start_address,
+            "end_address": self.end_address,
             "distance_meters": self.distance_meters,
             "duration_seconds": self.duration_seconds,
             "num_stops": len(self.stops),

@@ -111,6 +111,10 @@ class TripService:
             if start_ms and end_ms:
                 duration_seconds = int((end_ms - start_ms) / 1000)
             
+            # Extract address information from API
+            start_addr = raw.get('startAddress', {})
+            end_addr = raw.get('endAddress', {})
+            
             # Create trip instance
             trip = Trip(
                 id=trip_id,
@@ -120,14 +124,14 @@ class TripService:
                 end_time=end_time,
                 start_location=start_location,
                 end_location=end_location,
+                start_address=start_addr.get('address'),  # Extract street address
+                end_address=end_addr.get('address'),      # Extract street address
                 distance_meters=raw.get('distanceMeters'),
                 duration_seconds=duration_seconds
             )
             
             # Add resolved geofence names if available
             # First check if API provided address names
-            start_addr = raw.get('startAddress', {})
-            end_addr = raw.get('endAddress', {})
             
             start_geofence = start_addr.get('name')
             end_geofence = end_addr.get('name')
@@ -456,7 +460,11 @@ class TripService:
             
             print(f"\n{i}. Trip {trip.id}")
             print(f"   Start: {start_str} at {start_geofence}")
+            if trip.start_address:
+                print(f"          Address: {trip.start_address}")
             print(f"   End:   {end_str} at {end_geofence}")
+            if trip.end_address:
+                print(f"          Address: {trip.end_address}")
             print(f"   Distance: {distance_mi:.1f} miles")
             
             if trip.duration_seconds:
