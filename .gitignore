@@ -50,5 +50,8 @@ Thumbs.db
 # Logs
 *.log
 
+# JSON files
+*.json
+
 # SpecStory
 .specstory/
